@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { Image } from 'react-native'
 import { TabNavigator, StackNavigator} from 'react-navigation'
 
 import { Home, Category, Me, Detail} from 'page'
+
+import { COLOR_PRIMARY } from 'util'
 
 const Tabs = TabNavigator({
 	Home: {
@@ -9,7 +12,10 @@ const Tabs = TabNavigator({
 		navigationOptions: {
 			title: '首页',
 			tabBarLabel: '首页',
-			tabBarIcon: ''
+			tabBarIcon: ({tintColor, focused})=> {
+				const icon = focused ? require('images/tabbar/home_active.png') : require('images/tabbar/home.png')
+				return <Image source={icon}/>
+			}
 		}
 	},
 	Category: {
@@ -17,7 +23,10 @@ const Tabs = TabNavigator({
 		navigationOptions: {
 			title: '分类',
 			tabBarLabel: '分类',
-			tabBarIcon: ''
+			tabBarIcon: ({tintColor, focused})=> {
+				const icon = focused ? require('images/tabbar/category_active.png') : require('images/tabbar/category.png')
+				return <Image source={icon}/>
+			}
 		}
 	},
 	Me: {
@@ -25,14 +34,20 @@ const Tabs = TabNavigator({
 		navigationOptions: {
 			title: '我的',
 			tabBarLabel: '我的',
-			tabBarIcon: ''
+			tabBarIcon: ({tintColor, focused})=> {
+				const icon = focused ? require('images/tabbar/me_active.png') : require('images/tabbar/me.png')
+				return <Image source={icon}/>
+			}
 		}
 	}
 }, {
 	initialRouteName: 'Home',
 	tabBarPosition: 'bottom',
 	animationEnabled: false,
-	swipeEnabled: false
+	swipeEnabled: false,
+	tabBarOptions: {
+    activeTintColor: COLOR_PRIMARY,
+  }
 })
 
 export const App = StackNavigator({

@@ -10,12 +10,13 @@
     * redux 
     * store
     * util 工具库
+- images 图片
 ## 使用
 ```
 # 下载
 $ git clone https://github.com/genghaode/gengApp.git
 # 进入目录，安装依赖
-$ cd gengApp && npm i
+$ cd gengApp && yarn
 # 运行ios
 $ react-native run-ios
 ```
