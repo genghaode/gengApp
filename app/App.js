@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 import { TabNavigator, StackNavigator} from 'react-navigation'
 
 import { Home, Category, Me, Detail} from 'page'
@@ -14,7 +14,7 @@ const Tabs = TabNavigator({
 			tabBarLabel: '首页',
 			tabBarIcon: ({tintColor, focused})=> {
 				const icon = focused ? require('images/tabbar/home_active.png') : require('images/tabbar/home.png')
-				return <Image source={icon}/>
+				return <Image style={styles.icon} source={icon}/>
 			}
 		}
 	},
@@ -25,7 +25,7 @@ const Tabs = TabNavigator({
 			tabBarLabel: '分类',
 			tabBarIcon: ({tintColor, focused})=> {
 				const icon = focused ? require('images/tabbar/category_active.png') : require('images/tabbar/category.png')
-				return <Image source={icon}/>
+				return <Image style={styles.icon} source={icon}/>
 			}
 		}
 	},
@@ -36,7 +36,7 @@ const Tabs = TabNavigator({
 			tabBarLabel: '我的',
 			tabBarIcon: ({tintColor, focused})=> {
 				const icon = focused ? require('images/tabbar/me_active.png') : require('images/tabbar/me.png')
-				return <Image source={icon}/>
+				return <Image style={styles.icon} source={icon}/>
 			}
 		}
 	}
@@ -59,5 +59,12 @@ export const App = StackNavigator({
 		navigationOptions: {
 			title: '详情'
 		}
+	}
+})
+
+const styles = StyleSheet.create({
+	icon: {
+		width: 25,
+		height: 25,
 	}
 })
