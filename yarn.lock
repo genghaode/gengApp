@@ -10,6 +10,10 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@remobile/react-native-toast@^1.0.7":
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/@remobile/react-native-toast/download/@remobile/react-native-toast-1.0.7.tgz#b2e3684cdb13e1c9d9b4ed08e667157d4ad0fab2"
+
 "@types/node@*":
   version "8.5.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.5.7.tgz#9c498c35af354dcfbca3790fb2e81129e93cf0e2"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Image, StyleSheet } from 'react-native'
-import { TabNavigator, StackNavigator} from 'react-navigation'
+import { connect } from 'react-redux'
+import { addNavigationHelpers, TabNavigator, StackNavigator} from 'react-navigation'
 
 import { Home, Category, Me, Detail} from 'page'
 
@@ -61,6 +62,14 @@ export const App = StackNavigator({
 		}
 	}
 })
+
+const _AppState = ({ dispatch, nav }) => (
+  <App navigation={addNavigationHelpers({ dispatch, state: nav })} />
+)
+
+export const AppState = connect(state => ({
+  nav: state.nav,
+}))(_AppState)
 
 const styles = StyleSheet.create({
 	icon: {

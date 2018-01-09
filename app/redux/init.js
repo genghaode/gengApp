@@ -4,12 +4,12 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 import thunk from 'redux-thunk'
 
 
-import { user } from 'domain/redux/reducers/user'
+import { nav } from 'redux/reducers/nav'
 
 export const init = async() => {
 
   const reducer = combineReducers({
-    user
+    nav
   })
   const store = compose(
     autoRehydrate(),
