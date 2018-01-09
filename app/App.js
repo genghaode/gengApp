@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { addNavigationHelpers, TabNavigator, StackNavigator} from 'react-navigation'
 
@@ -14,8 +14,8 @@ const Tabs = TabNavigator({
 			title: '首页',
 			tabBarLabel: '首页',
 			tabBarIcon: ({tintColor, focused})=> {
-				const icon = focused ? require('images/tabbar/home_active.png') : require('images/tabbar/home.png')
-				return <Image style={styles.icon} source={icon}/>
+				const icon = focused ? require('assets/tabbar/home_active.png') : require('assets/tabbar/home.png')
+				return <Text style={styles.icon}>&#xe62a;</Text>
 			}
 		}
 	},
@@ -25,8 +25,7 @@ const Tabs = TabNavigator({
 			title: '分类',
 			tabBarLabel: '分类',
 			tabBarIcon: ({tintColor, focused})=> {
-				const icon = focused ? require('images/tabbar/category_active.png') : require('images/tabbar/category.png')
-				return <Image style={styles.icon} source={icon}/>
+				return <Text style={styles.icon}>&#xe614;</Text>
 			}
 		}
 	},
@@ -36,8 +35,7 @@ const Tabs = TabNavigator({
 			title: '我的',
 			tabBarLabel: '我的',
 			tabBarIcon: ({tintColor, focused})=> {
-				const icon = focused ? require('images/tabbar/me_active.png') : require('images/tabbar/me.png')
-				return <Image style={styles.icon} source={icon}/>
+				return <Text style={styles.icon}>&#xe602;</Text>
 			}
 		}
 	}
@@ -73,7 +71,7 @@ export const AppState = connect(state => ({
 
 const styles = StyleSheet.create({
 	icon: {
-		width: 25,
-		height: 25,
+		fontFamily: 'iconfont',
+		fontSize: 26
 	}
 })
