@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-
+import { Provider, connect } from 'react-redux'
 import { init } from 'redux/init'
-import { AppState } from './App'
+import { App } from './App'
+
+const _AppState = ({ dispatch, nav }) => (
+  <App navigation={addNavigationHelpers({ dispatch, state: nav })} />
+)
+
+const AppState = connect(state => ({
+  nav: state.nav,
+}))(_AppState)
 
 export class Entry extends Component {
 	constructor() {
