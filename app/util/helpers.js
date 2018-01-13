@@ -13,8 +13,7 @@ export const format_currency = (value) => {
 }
 
 // url路径拼接
-export const path_join = ()=>{
-  const paths = [...arguments]
+export const path_join = (...paths)=>{
   return paths.map(x => {
     return x.replace(/(^\/|\/$)/g, '')
   }).join('/')

@@ -10,7 +10,6 @@
 - app 
     * Entry.js 入口文件，redux配置
     * App.js 路由配置
-    * api 网络请求
     * component 公共组件
     * container 包裹层组件
         + LoadingContainer.js 页面初始时容器
@@ -20,7 +19,9 @@
         + Me.js 我的页面
         + Detail.js 详情 页面
     * redux 
-    * store
+        + store.js
+        + reducers
+            - nav.js
     * util 工具库
         + def.js 常用变量
         + http.js 请求封装

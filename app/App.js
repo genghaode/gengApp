@@ -4,7 +4,11 @@ import { addNavigationHelpers, TabNavigator, StackNavigator} from 'react-navigat
 
 import { Home, Category, Me, Detail} from 'page'
 
-import { COLOR_PRIMARY } from 'util'
+import { COLOR_PRIMARY, COLOR_PRIMARY_TXT, COLOR_TITLE, icon } from 'util'
+
+
+const iconStyle = {color: COLOR_TITLE, ...icon}
+const activeIconStyle = {color: COLOR_PRIMARY, ...icon}
 
 const Tabs = TabNavigator({
 	Home: {
@@ -13,8 +17,7 @@ const Tabs = TabNavigator({
 			title: '首页',
 			tabBarLabel: '首页',
 			tabBarIcon: ({tintColor, focused})=> {
-				const icon = focused ? require('assets/tabbar/home_active.png') : require('assets/tabbar/home.png')
-				return <Text style={styles.icon}>&#xe62a;</Text>
+				return <Text style={focused ? activeIconStyle : iconStyle}>&#xe62a;</Text>
 			}
 		}
 	},
@@ -24,7 +27,7 @@ const Tabs = TabNavigator({
 			title: '分类',
 			tabBarLabel: '分类',
 			tabBarIcon: ({tintColor, focused})=> {
-				return <Text style={styles.icon}>&#xe614;</Text>
+				return <Text style={focused ? activeIconStyle : iconStyle}>&#xe614;</Text>
 			}
 		}
 	},
@@ -34,7 +37,7 @@ const Tabs = TabNavigator({
 			title: '我的',
 			tabBarLabel: '我的',
 			tabBarIcon: ({tintColor, focused})=> {
-				return <Text style={styles.icon}>&#xe602;</Text>
+				return <Text style={focused ? activeIconStyle : iconStyle}>&#xe602;</Text>
 			}
 		}
 	}
@@ -45,6 +48,7 @@ const Tabs = TabNavigator({
 	swipeEnabled: false,
 	tabBarOptions: {
     activeTintColor: COLOR_PRIMARY,
+    inactiveTintColor: COLOR_TITLE
   }
 })
 
@@ -58,11 +62,9 @@ export const App = StackNavigator({
 			title: '详情'
 		}
 	}
-})
-
-const styles = StyleSheet.create({
-	icon: {
-		fontFamily: 'iconfont',
-		fontSize: 26
+}, {
+	navigationOptions: {
+		headerStyle: {backgroundColor: COLOR_PRIMARY},
+		headerTitleStyle: {color: COLOR_PRIMARY_TXT}
 	}
 })
