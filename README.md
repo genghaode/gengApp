@@ -5,7 +5,6 @@
 - redux
 - react-redux
 - redux-thunk
-- redux-persist
 ## 目录结构
 - app 
     * Entry.js 入口文件，redux配置

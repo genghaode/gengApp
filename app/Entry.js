@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Provider, connect } from 'react-redux'
 import { addNavigationHelpers } from 'react-navigation'
 import { StatusBar, View } from 'react-native'
-import { store } from './redux/store'
+import { store } from 'redux/store'
 import { App } from './App'
 
 

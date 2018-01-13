@@ -2,7 +2,7 @@ import { compose, applyMiddleware, createStore, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
-import { nav } from './reducers/nav'
+import { nav } from 'redux/reducers/nav'
 
 const reducer = combineReducers({
   nav
