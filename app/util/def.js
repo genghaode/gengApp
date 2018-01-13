@@ -12,5 +12,5 @@ export const COLOR_DEFAULT = '#999'
 
 
 // 全局样式
-export const flexCenter = {alignItems: 'center', justifyContent: 'center'}
-export const icon = {fontFamily: 'iconfont'}
+export const FlexCenter = {alignItems: 'center', justifyContent: 'center'}
+export const IconFont = {fontFamily: 'iconfont'}

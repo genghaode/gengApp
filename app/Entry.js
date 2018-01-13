@@ -13,13 +13,14 @@ class AppState extends Component{
   render(){
     const { dispatch, nav } = this.props
     return (
-      <View>
+      <View style={{flex: 1}}>
         <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
         <App navigation={addNavigationHelpers({ dispatch, state: nav })} />
       </View>
     )
   }
 }
+
 
 export class Entry extends Component {
 	state = {

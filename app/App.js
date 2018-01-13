@@ -4,11 +4,11 @@ import { addNavigationHelpers, TabNavigator, StackNavigator} from 'react-navigat
 
 import { Home, Category, Me, Detail} from 'page'
 
-import { COLOR_PRIMARY, COLOR_PRIMARY_TXT, COLOR_TITLE, icon } from 'util'
+import { COLOR_PRIMARY, COLOR_PRIMARY_TXT, COLOR_TITLE, IconFont } from 'util'
 
 
-const iconStyle = {color: COLOR_TITLE, ...icon}
-const activeIconStyle = {color: COLOR_PRIMARY, ...icon}
+const iconStyle = {color: COLOR_TITLE, ...IconFont}
+const activeIconStyle = {color: COLOR_PRIMARY, ...IconFont}
 
 const Tabs = TabNavigator({
 	Home: {
