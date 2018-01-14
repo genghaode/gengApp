@@ -5,12 +5,14 @@
 - redux
 - react-redux
 - redux-thunk
+- redux-logger
 ## 目录结构
 - app 
     * Entry.js 入口文件，redux配置
     * App.js 路由配置
     * component 公共组件
-    * container 包裹层组件
+        + GButton.js 按钮组件
+    * container 包裹层组件，封装的公共逻辑的高阶组件
         + LoadingContainer.js 页面初始时容器
     * page 页面
         + Home.js 首页

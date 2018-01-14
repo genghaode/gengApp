@@ -2,11 +2,8 @@ import qs from 'qs'
 import {AsyncStorage} from 'react-native'
 import { path_join, SERVICE_BASE, alert } from 'util'
 
-// 工厂方法，高阶函数，传入请求方法和其他参数
 function http_factory(method, options) {
-  // 传入请求路径和参数
   return (url, params) => {
-    // 拼接路径
     url = path_join(SERVICE_BASE, url)
 
     const options = {
@@ -29,22 +26,22 @@ function http_factory(method, options) {
       options.body = JSON.stringify(params)
     }
     
-    // 返回一个promise
-    // 进行fetch请求
-    return fetch(url, options).then(response => {
-      // 返回json类型数据
-      return response.json()
-    }).catch(error => {
-      // 出现请求错误时抛出异常，停止往下执行
-      throw { errorMessage: '网络错误，请重试' }
+    return fetch(url, options).then(res => {
+
+      return res.json()
+    }).catch(err => {
+      console.log(11111111)
+      throw { code: 500, message: '网络错误，请重试' }
     }).then(json => {
-      if (json.errorMessage) {
-        // 请求的结果有错误信息，抛出异常
-        alert(json.errorMessage)
-        throw json
-      } else {
-        // 正常返回数据
+      console.log(json)
+      if (json.message) {
+        alert(json.message)
+      }
+      console.log(json)
+      if(json.code < 300 ){
         return json.data
+      }else {
+        throw json
       }
     })
   }

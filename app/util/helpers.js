@@ -1,4 +1,4 @@
-import Toast from '@remobile/react-native-toast'
+import Toast from 'react-native-root-toast'
 
 // 货币格式化，添加货币分隔符
 export const format_currency = (value) => {
@@ -19,22 +19,10 @@ export const path_join = (...paths)=>{
   }).join('/')
 }
 
-// 没有登录时提示登录并跳转到登录页面
-export const login_check = async (json, navigator, route) => {
-  if(json.code === 201){
-    Toast.show('请登录')
-    await get_token(true)
-    setTimeout(()=> {
-      navigator.push({...Routes.Login, from: route})
-    })
-    return false
-  }
-  return true
-}
-
 // 提示
 export const alert = (text)=> {
-  setTimeout(()=> {
-    Toast.show(text)
-  }, 1)
+  Toast.show(text, {
+    position: Toast.positions.CENTER,
+    delay: 1,
+  })
 }
