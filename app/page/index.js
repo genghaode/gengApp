@@ -10,5 +10,8 @@ module.exports = {
 	},
 	get Detail(){
 		return require('./Detail').Detail
+	},
+	get Login(){
+		return require('./Login').Login
 	}
 }

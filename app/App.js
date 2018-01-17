@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
 import { addNavigationHelpers, TabNavigator, StackNavigator} from 'react-navigation'
 
-import { Home, Category, Me, Detail} from 'page'
+import { Home, Category, Me, Detail, Login} from 'page'
 
 import { COLOR_PRIMARY, COLOR_PRIMARY_TXT, COLOR_TITLE, IconFont } from 'util'
 
@@ -61,10 +61,18 @@ export const App = StackNavigator({
 		navigationOptions: {
 			title: '详情'
 		}
+	},
+	Login: {
+		screen: Login,
+		navigationOptions: {
+			title: '登录'
+		}
 	}
 }, {
 	navigationOptions: {
 		headerStyle: {backgroundColor: COLOR_PRIMARY},
-		headerTitleStyle: {color: COLOR_PRIMARY_TXT}
+		headerTitleStyle: {color: COLOR_PRIMARY_TXT},
+		headerBackTitleStyle: {color: COLOR_PRIMARY_TXT},
+		headerTintColor: COLOR_PRIMARY_TXT
 	}
 })

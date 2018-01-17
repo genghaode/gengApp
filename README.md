@@ -6,6 +6,7 @@
 - react-redux
 - redux-thunk
 - redux-logger
+- react-native-root-toast
 ## 目录结构
 - app 
     * Entry.js 入口文件，redux配置

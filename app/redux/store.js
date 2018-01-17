@@ -3,9 +3,11 @@ import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
 import { nav } from 'redux/reducers/nav'
+import { auth } from 'redux/reducers/auth'
 
 const reducer = combineReducers({
-  nav
+  nav,
+  auth
 })
 
 const _store = compose(
