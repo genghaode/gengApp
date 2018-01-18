@@ -42,7 +42,6 @@ const Tabs = TabNavigator({
 		}
 	}
 }, {
-	initialRouteName: 'Home',
 	tabBarPosition: 'bottom',
 	animationEnabled: false,
 	swipeEnabled: false,

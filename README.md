@@ -23,8 +23,8 @@
         + Me.js 我的页面
         + Detail.js 详情页面
         + Login.js 登录页面
-    * redux 
-        + store.js
+    * store 
+        + init.js
         + reducers
             - nav.js
             - auth.js
