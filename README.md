@@ -6,6 +6,7 @@
 - react-redux
 - redux-thunk
 - redux-logger
+- redux-persist
 - react-native-root-toast
 ## 目录结构
 - app 
@@ -19,11 +20,13 @@
         + Home.js 首页
         + Category.js 分类页面
         + Me.js 我的页面
-        + Detail.js 详情 页面
+        + Detail.js 详情页面
+        + Login.js 登录页面
     * redux 
         + store.js
         + reducers
             - nav.js
+            - auth.js
     * util 工具库
         + def.js 常用变量
         + http.js 请求封装
@@ -39,7 +42,7 @@
     * 展示页面
 - 请求逻辑
     * 判断是否需要传入token
-    * 获取本地token，加入请求头
+    * 获取store中token，加入请求头
     * 根据返回结果判断
         + message字段为提示内容
         + code字段为状态码
@@ -55,11 +58,10 @@
         + 404(未找到内容)
         + 500(服务器错误)
 - 登录逻辑
-    * 成功时返回token
-    * 存入store中
+    * 更新store状态
     * 返回到上一页面
 - 退出逻辑
-    * 删除store中的token
+    * 更新store状态
     * 跳转到登录页面
 ## 使用
 ```

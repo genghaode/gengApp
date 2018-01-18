@@ -1,7 +1,7 @@
 import qs from 'qs'
-import {AsyncStorage} from 'react-native'
+
 import { path_join, SERVICE_BASE, alert } from 'util'
-import { NavigationActions } from 'react-navigation'
+
 function http_factory(method, auth) {
   return async (url, params) => {
     url = path_join(SERVICE_BASE, url)
@@ -14,7 +14,7 @@ function http_factory(method, auth) {
     }
 
     if(auth){
-      options.headers.Authorization = await AsyncStorage.getItem('token')
+      options.headers.Authorization = ''
     }
 
     if (method === 'GET') {
@@ -41,8 +41,7 @@ function http_factory(method, auth) {
       if(json.code < 300 ){
         return json.data
       }else if(json.code == 401){
-        console.log(store)
-        store.dispatch(NavigationActions.navigate({ routeName: 'Login' }))
+        store.dispatch({ type: 'Logout' })
       }else {
         throw json
       }
