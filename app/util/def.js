@@ -1,6 +1,7 @@
 // api根域名
 // export const SERVICE_BASE = 'https://app.shijiudian.com'
-export const SERVICE_BASE = 'http://localhost:7001/'
+// export const SERVICE_BASE = 'http://localhost:7001/'
+export const SERVICE_BASE = 'mock'
 
 // 颜色
 export const COLOR_PRIMARY = '#f04848'

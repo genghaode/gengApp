@@ -9,6 +9,7 @@
 - redux-persist
 - react-native-root-toast
 ## 目录结构
+- index.js
 - app 
     * Entry.js 入口文件，redux配置
     * App.js 路由配置
