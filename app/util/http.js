@@ -1,5 +1,5 @@
 import qs from 'qs'
-
+import { CancelablePromise } from 'util/CancelablePromise'
 import { path_join, SERVICE_BASE, alert } from 'util'
 
 function http_factory(method, auth) {
@@ -30,21 +30,24 @@ function http_factory(method, auth) {
       options.body = JSON.stringify(params)
     }
     console.log(url, options)
-    return fetch(url, options).then(res => {
-      return res.json()
-    }).catch(err => {
-      throw { code: 500, message: '网络错误，请重试' }
-    }).then(json => {
-      if (json.message) {
-        alert(json.message)
-      }
-      if(json.code < 300 ){
-        return json.data
-      }else if(json.code == 401){
-        store.dispatch({ type: 'Logout' })
-      }else {
-        throw json
-      }
+    return new CancelablePromise((resolve, reject) => {
+      fetch(url, options).then(res => {
+        return res.json()
+      }).catch(err => {
+        reject({ code: 500, message: '网络错误，请重试' })
+      }).then(json => {
+        if (json.message) {
+          alert(json.message)
+        }
+        if(json.code>= 200 && json.code < 300 ){
+          resolve(json.data)
+        } else {
+          if(json.code == 401){
+            store.dispatch({ type: 'Logout' })
+          }
+          reject(json)
+        }
+      })
     })
   }
 }
