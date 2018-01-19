@@ -1,6 +1,5 @@
 import qs from 'qs'
-import { CancelablePromise } from 'util/CancelablePromise'
-import { path_join, SERVICE_BASE, alert } from 'util'
+import { path_join, SERVICE_BASE, alert, CancelablePromise } from 'util'
 
 function http_factory(method, auth) {
   return async (url, params) => {
