@@ -1,8 +1,26 @@
 import qs from 'qs'
 import { path_join, SERVICE_BASE, alert, CancelablePromise } from 'util'
 
+const _fetch = (function(fetch){
+  return function(url,options){
+    var abort = null;
+    var abort_promise = new Promise((resolve, reject)=>{
+      abort = () => {
+        reject({code: 500, message: '网络错误，请重试'})
+        console.info('abort done.');
+      };
+    });
+    var promise = Promise.race([
+      fetch(url,options),
+      abort_promise
+    ]);
+    promise.abort = abort;
+    return promise;
+  };
+})(fetch)
+
 function http_factory(method, auth) {
-  return async (url, params) => {
+  return (url, params) => {
     url = path_join(SERVICE_BASE, url)
 
     const options = {
@@ -29,24 +47,22 @@ function http_factory(method, auth) {
       options.body = JSON.stringify(params)
     }
     console.log(url, options)
-    return new CancelablePromise((resolve, reject) => {
-      fetch(url, options).then(res => {
-        return res.json()
-      }).catch(err => {
-        reject({ code: 500, message: '网络错误，请重试' })
-      }).then(json => {
-        if (json.message) {
-          alert(json.message)
+    return fetch(url, options).then(res => {
+      return res.json()
+    }).catch(err => {
+        throw { code: 500, message: '网络错误，请重试' }
+    }).then(json => {
+      if (json.message) {
+        alert(json.message)
+      }
+      if(json.code>= 200 && json.code < 300 ){
+        return json.data
+      } else {
+        if(json.code == 401){
+          store.dispatch({ type: 'Logout' })
         }
-        if(json.code>= 200 && json.code < 300 ){
-          resolve(json.data)
-        } else {
-          if(json.code == 401){
-            store.dispatch({ type: 'Logout' })
-          }
-          reject(json)
-        }
-      })
+        throw json
+      }
     })
   }
 }

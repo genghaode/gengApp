@@ -18,6 +18,7 @@ export const LoadingContainer = arg => WrapComponent => class extends Component 
     })
     try {
       const data = await arg.request()
+      console.log(data)
       this.setState({ 
         data, 
         error: false,
@@ -30,7 +31,9 @@ export const LoadingContainer = arg => WrapComponent => class extends Component 
       })
     }
   }
-
+  componentWillUnmount(){
+    console.log(11111)
+  }
   render() {
     const { data, error, loading } = this.state
     if (error) {
